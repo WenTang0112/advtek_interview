@@ -12,6 +12,29 @@ public class ScheduleService(
     private const int MaximumEmployeesPerDay = 2;
     private const int MaximumWorkdaysPerEmployeePerMonth = 15;
 
+    public async Task<ScheduleQueryResult> GetNextMonthAsync(
+        int employeeId,
+        CancellationToken cancellationToken = default)
+    {
+        if (!await EmployeeExistsAsync(employeeId, cancellationToken))
+        {
+            return ScheduleQueryResult.Failure("EmployeeNotFound", "找不到指定員工。");
+        }
+
+        var today = DateOnly.FromDateTime(timeProvider.GetLocalNow().DateTime);
+        var firstDayOfNextMonth = new DateOnly(today.Year, today.Month, 1).AddMonths(1);
+        var firstDayOfFollowingMonth = firstDayOfNextMonth.AddMonths(1);
+        var schedules = await dbContext.Schedules
+            .AsNoTracking()
+            .Where(schedule => schedule.EmployeeId == employeeId
+                && schedule.WorkDate >= firstDayOfNextMonth
+                && schedule.WorkDate < firstDayOfFollowingMonth)
+            .OrderBy(schedule => schedule.WorkDate)
+            .ToListAsync(cancellationToken);
+
+        return ScheduleQueryResult.Success(schedules);
+    }
+
     public async Task<ScheduleOperationResult> CreateAsync(
         int employeeId,
         DateOnly workDate,
@@ -37,7 +60,7 @@ public class ScheduleService(
             return ScheduleOperationResult.Failure("Holiday", "國定假日不可排班。");
         }
 
-        if (!await dbContext.Employees.AnyAsync(employee => employee.Id == employeeId, cancellationToken))
+        if (!await EmployeeExistsAsync(employeeId, cancellationToken))
         {
             return ScheduleOperationResult.Failure("EmployeeNotFound", "找不到指定員工。");
         }
@@ -90,5 +113,64 @@ public class ScheduleService(
         }
 
         return ScheduleOperationResult.Success(schedule);
+    }
+
+    public async Task<ScheduleOperationResult> CancelAsync(
+        int employeeId,
+        int scheduleId,
+        CancellationToken cancellationToken = default)
+    {
+        if (!await EmployeeExistsAsync(employeeId, cancellationToken))
+        {
+            return ScheduleOperationResult.Failure("EmployeeNotFound", "找不到指定員工。");
+        }
+
+        var schedule = await dbContext.Schedules.SingleOrDefaultAsync(
+            item => item.Id == scheduleId && item.EmployeeId == employeeId,
+            cancellationToken);
+
+        if (schedule is null)
+        {
+            return ScheduleOperationResult.Failure("ScheduleNotFound", "找不到指定的個人排班。");
+        }
+
+        dbContext.Schedules.Remove(schedule);
+
+        try
+        {
+            await dbContext.SaveChangesAsync(cancellationToken);
+        }
+        catch (DbUpdateException)
+        {
+            return ScheduleOperationResult.Failure("ScheduleConflict", "排班資料已變更，請重新確認後再試。 ");
+        }
+
+        return ScheduleOperationResult.Success(schedule, "排班已取消。");
+    }
+
+    public async Task<ScheduleCountResult> GetCurrentMonthCountAsync(
+        int employeeId,
+        CancellationToken cancellationToken = default)
+    {
+        if (!await EmployeeExistsAsync(employeeId, cancellationToken))
+        {
+            return ScheduleCountResult.Failure("EmployeeNotFound", "找不到指定員工。");
+        }
+
+        var today = DateOnly.FromDateTime(timeProvider.GetLocalNow().DateTime);
+        var firstDayOfCurrentMonth = new DateOnly(today.Year, today.Month, 1);
+        var firstDayOfNextMonth = firstDayOfCurrentMonth.AddMonths(1);
+        var scheduledDays = await dbContext.Schedules.CountAsync(
+            schedule => schedule.EmployeeId == employeeId
+                && schedule.WorkDate >= firstDayOfCurrentMonth
+                && schedule.WorkDate < firstDayOfNextMonth,
+            cancellationToken);
+
+        return ScheduleCountResult.Success(scheduledDays);
+    }
+
+    private Task<bool> EmployeeExistsAsync(int employeeId, CancellationToken cancellationToken)
+    {
+        return dbContext.Employees.AnyAsync(employee => employee.Id == employeeId, cancellationToken);
     }
 }
