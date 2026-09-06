@@ -1,0 +1,11 @@
+D:\排班系統\backend\src\ShiftPlanner.Domain\bin\Debug\net8.0\ShiftPlanner.Domain.deps.json
+D:\排班系統\backend\src\ShiftPlanner.Domain\bin\Debug\net8.0\ShiftPlanner.Domain.dll
+D:\排班系統\backend\src\ShiftPlanner.Domain\bin\Debug\net8.0\ShiftPlanner.Domain.pdb
+D:\排班系統\backend\src\ShiftPlanner.Domain\obj\Debug\net8.0\ShiftPlanner.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\排班系統\backend\src\ShiftPlanner.Domain\obj\Debug\net8.0\ShiftPlanner.Domain.AssemblyInfoInputs.cache
+D:\排班系統\backend\src\ShiftPlanner.Domain\obj\Debug\net8.0\ShiftPlanner.Domain.AssemblyInfo.cs
+D:\排班系統\backend\src\ShiftPlanner.Domain\obj\Debug\net8.0\ShiftPlanner.Domain.csproj.CoreCompileInputs.cache
+D:\排班系統\backend\src\ShiftPlanner.Domain\obj\Debug\net8.0\ShiftPlanner.Domain.dll
+D:\排班系統\backend\src\ShiftPlanner.Domain\obj\Debug\net8.0\refint\ShiftPlanner.Domain.dll
+D:\排班系統\backend\src\ShiftPlanner.Domain\obj\Debug\net8.0\ShiftPlanner.Domain.pdb
+D:\排班系統\backend\src\ShiftPlanner.Domain\obj\Debug\net8.0\ref\ShiftPlanner.Domain.dll

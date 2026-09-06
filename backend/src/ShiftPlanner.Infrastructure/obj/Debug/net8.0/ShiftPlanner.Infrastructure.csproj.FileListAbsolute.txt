@@ -1,0 +1,17 @@
+D:\排班系統\backend\src\ShiftPlanner.Infrastructure\bin\Debug\net8.0\ShiftPlanner.Infrastructure.deps.json
+D:\排班系統\backend\src\ShiftPlanner.Infrastructure\bin\Debug\net8.0\ShiftPlanner.Infrastructure.dll
+D:\排班系統\backend\src\ShiftPlanner.Infrastructure\bin\Debug\net8.0\ShiftPlanner.Infrastructure.pdb
+D:\排班系統\backend\src\ShiftPlanner.Infrastructure\bin\Debug\net8.0\ShiftPlanner.Application.dll
+D:\排班系統\backend\src\ShiftPlanner.Infrastructure\bin\Debug\net8.0\ShiftPlanner.Domain.dll
+D:\排班系統\backend\src\ShiftPlanner.Infrastructure\bin\Debug\net8.0\ShiftPlanner.Application.pdb
+D:\排班系統\backend\src\ShiftPlanner.Infrastructure\bin\Debug\net8.0\ShiftPlanner.Domain.pdb
+D:\排班系統\backend\src\ShiftPlanner.Infrastructure\obj\Debug\net8.0\ShiftPlanner.Infrastructure.csproj.AssemblyReference.cache
+D:\排班系統\backend\src\ShiftPlanner.Infrastructure\obj\Debug\net8.0\ShiftPlanner.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+D:\排班系統\backend\src\ShiftPlanner.Infrastructure\obj\Debug\net8.0\ShiftPlanner.Infrastructure.AssemblyInfoInputs.cache
+D:\排班系統\backend\src\ShiftPlanner.Infrastructure\obj\Debug\net8.0\ShiftPlanner.Infrastructure.AssemblyInfo.cs
+D:\排班系統\backend\src\ShiftPlanner.Infrastructure\obj\Debug\net8.0\ShiftPlanner.Infrastructure.csproj.CoreCompileInputs.cache
+D:\排班系統\backend\src\ShiftPlanner.Infrastructure\obj\Debug\net8.0\ShiftPla.C8293791.Up2Date
+D:\排班系統\backend\src\ShiftPlanner.Infrastructure\obj\Debug\net8.0\ShiftPlanner.Infrastructure.dll
+D:\排班系統\backend\src\ShiftPlanner.Infrastructure\obj\Debug\net8.0\refint\ShiftPlanner.Infrastructure.dll
+D:\排班系統\backend\src\ShiftPlanner.Infrastructure\obj\Debug\net8.0\ShiftPlanner.Infrastructure.pdb
+D:\排班系統\backend\src\ShiftPlanner.Infrastructure\obj\Debug\net8.0\ref\ShiftPlanner.Infrastructure.dll

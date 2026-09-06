@@ -1,0 +1,15 @@
+D:\排班系統\backend\src\ShiftPlanner.Application\bin\Debug\net8.0\ShiftPlanner.Application.deps.json
+D:\排班系統\backend\src\ShiftPlanner.Application\bin\Debug\net8.0\ShiftPlanner.Application.dll
+D:\排班系統\backend\src\ShiftPlanner.Application\bin\Debug\net8.0\ShiftPlanner.Application.pdb
+D:\排班系統\backend\src\ShiftPlanner.Application\bin\Debug\net8.0\ShiftPlanner.Domain.dll
+D:\排班系統\backend\src\ShiftPlanner.Application\bin\Debug\net8.0\ShiftPlanner.Domain.pdb
+D:\排班系統\backend\src\ShiftPlanner.Application\obj\Debug\net8.0\ShiftPlanner.Application.csproj.AssemblyReference.cache
+D:\排班系統\backend\src\ShiftPlanner.Application\obj\Debug\net8.0\ShiftPlanner.Application.GeneratedMSBuildEditorConfig.editorconfig
+D:\排班系統\backend\src\ShiftPlanner.Application\obj\Debug\net8.0\ShiftPlanner.Application.AssemblyInfoInputs.cache
+D:\排班系統\backend\src\ShiftPlanner.Application\obj\Debug\net8.0\ShiftPlanner.Application.AssemblyInfo.cs
+D:\排班系統\backend\src\ShiftPlanner.Application\obj\Debug\net8.0\ShiftPlanner.Application.csproj.CoreCompileInputs.cache
+D:\排班系統\backend\src\ShiftPlanner.Application\obj\Debug\net8.0\ShiftPla.89CA7F83.Up2Date
+D:\排班系統\backend\src\ShiftPlanner.Application\obj\Debug\net8.0\ShiftPlanner.Application.dll
+D:\排班系統\backend\src\ShiftPlanner.Application\obj\Debug\net8.0\refint\ShiftPlanner.Application.dll
+D:\排班系統\backend\src\ShiftPlanner.Application\obj\Debug\net8.0\ShiftPlanner.Application.pdb
+D:\排班系統\backend\src\ShiftPlanner.Application\obj\Debug\net8.0\ref\ShiftPlanner.Application.dll

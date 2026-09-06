@@ -1,0 +1,56 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "ShiftPlanner.Infrastructure/1.0.0": {
+        "dependencies": {
+          "ShiftPlanner.Application": "1.0.0",
+          "ShiftPlanner.Domain": "1.0.0"
+        },
+        "runtime": {
+          "ShiftPlanner.Infrastructure.dll": {}
+        }
+      },
+      "ShiftPlanner.Application/1.0.0": {
+        "dependencies": {
+          "ShiftPlanner.Domain": "1.0.0"
+        },
+        "runtime": {
+          "ShiftPlanner.Application.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "ShiftPlanner.Domain/1.0.0": {
+        "runtime": {
+          "ShiftPlanner.Domain.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "ShiftPlanner.Infrastructure/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "ShiftPlanner.Application/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "ShiftPlanner.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
