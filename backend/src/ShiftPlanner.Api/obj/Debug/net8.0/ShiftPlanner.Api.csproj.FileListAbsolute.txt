@@ -143,3 +143,4 @@ D:\排班系統\backend\src\ShiftPlanner.Api\bin\Debug\net8.0\runtimes\win\lib\n
 D:\排班系統\backend\src\ShiftPlanner.Api\obj\Debug\net8.0\ShiftPlanner.Api.csproj.AssemblyReference.cache
 D:\排班系統\backend\src\ShiftPlanner.Api\obj\Debug\net8.0\ShiftPlanner.Api.sourcelink.json
 D:\排班系統\backend\src\ShiftPlanner.Api\obj\Debug\net8.0\ShiftPla.BEDFB0FA.Up2Date
+D:\排班系統\backend\src\ShiftPlanner.Api\bin\Debug\net8.0\Data\Holidays\government-office-calendar.json

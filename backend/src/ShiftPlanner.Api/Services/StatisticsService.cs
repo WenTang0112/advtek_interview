@@ -5,7 +5,9 @@ using ShiftPlanner.Api.ViewModels;
 
 namespace ShiftPlanner.Api.Services;
 
-public class StatisticsService(ApplicationDbContext dbContext) : IStatisticsService
+public class StatisticsService(
+    ApplicationDbContext dbContext,
+    ICalendarService calendarService) : IStatisticsService
 {
     public async Task<StatisticsDashboardDto> GetDashboardAsync(
         int year,
@@ -85,6 +87,7 @@ public class StatisticsService(ApplicationDbContext dbContext) : IStatisticsServ
             .Select(dayOffset => firstDayOfMonth.AddDays(dayOffset))
             .Select(workDate => new DailyScheduleDto(
                 workDate,
+                calendarService.GetHolidayName(workDate),
                 employeesByDate.GetValueOrDefault(workDate, [])))
             .ToList();
 

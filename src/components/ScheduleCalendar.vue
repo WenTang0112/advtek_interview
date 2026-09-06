@@ -130,23 +130,39 @@ function getErrorMessage(error: unknown): string {
 
 <style scoped>
 .schedule-calendar {
-  border: 1px solid var(--border);
-  padding: 1.5rem;
+  background: var(--surface);
+  border-top: 3px solid var(--blue);
+  box-shadow: 0 14px 30px rgb(23 58 94 / 8%);
+  padding: 2rem;
   text-align: left;
 }
 
 .calendar-header {
   align-items: start;
   display: flex;
-  gap: 1.5rem;
+  gap: 2rem;
   justify-content: space-between;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.calendar-header h2 {
+  color: var(--navy);
+  font-size: 1.4rem;
+  margin: 0 0 0.45rem;
+}
+
+.calendar-header p {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin: 0;
 }
 
 .schedule-limits {
+  border-left: 1px solid var(--border);
   display: flex;
-  gap: 1rem;
+  gap: 1.3rem;
   margin: 0;
+  padding-left: 1.5rem;
 }
 
 .schedule-limits div {
@@ -154,33 +170,41 @@ function getErrorMessage(error: unknown): string {
 }
 
 .schedule-limits dt {
+  color: var(--muted);
   font-size: 0.8rem;
 }
 
 .schedule-limits dd {
-  font-size: 1.1rem;
+  color: var(--navy);
+  font-size: 1.15rem;
   font-weight: 700;
   margin: 0.2rem 0 0;
 }
 
 .calendar-grid {
   display: grid;
-  gap: 0.75rem;
+  border-top: 1px solid var(--border);
+  gap: 0;
   grid-template-columns: repeat(7, minmax(0, 1fr));
 }
 
 .calendar-day {
-  border: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  border-right: 1px solid var(--border);
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
-  min-height: 10rem;
-  padding: 0.75rem;
+  gap: 0.7rem;
+  min-height: 9.5rem;
+  padding: 0.8rem;
 }
 
 .weekday {
+  background: #e8f1f4;
+  border-bottom: 1px solid var(--border);
+  color: var(--navy);
   font-size: 0.8rem;
   font-weight: 700;
+  padding: 0.75rem 0.25rem;
   text-align: center;
 }
 
@@ -189,13 +213,13 @@ function getErrorMessage(error: unknown): string {
 }
 
 .calendar-day time {
-  color: var(--text-h);
+  color: var(--navy);
   font-weight: 700;
 }
 
 .status-list {
   flex: 1;
-  font-size: 0.8rem;
+  font-size: 0.76rem;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -206,12 +230,36 @@ function getErrorMessage(error: unknown): string {
 }
 
 button {
-  min-height: 2.25rem;
+  background: var(--navy);
+  border: 1px solid var(--navy);
+  color: #fff;
+  cursor: pointer;
+  font-size: 0.78rem;
+  font-weight: 700;
+  min-height: 2.15rem;
+}
+
+button:hover:not(:disabled) {
+  background: var(--blue);
+  border-color: var(--blue);
+}
+
+button:focus-visible {
+  outline: 3px solid var(--teal);
+  outline-offset: 2px;
+}
+
+button:disabled {
+  background: #f2f5f6;
+  border-color: #dce5e9;
+  color: #7a8b97;
+  cursor: not-allowed;
 }
 
 .error-message {
-  border-left: 3px solid #b42318;
-  color: #8b1e17;
+  background: #fff7f6;
+  border-left: 3px solid #b44941;
+  color: #81332e;
   margin: 0 0 1rem;
   padding-left: 0.75rem;
 }
@@ -223,6 +271,16 @@ button {
 
   .calendar-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .weekday:nth-child(n + 3),
+  .calendar-blank {
+    display: none;
+  }
+
+  .schedule-limits {
+    border-left: 0;
+    padding-left: 0;
   }
 }
 </style>

@@ -294,3 +294,33 @@ code {
     border-right-color: var(--border);
   }
 }
+
+:root {
+  --page-bg: #eef4f6;
+  --surface: #ffffff;
+  --ink: #1b2d3e;
+  --muted: #607384;
+  --navy: #173a5e;
+  --blue: #1e75a9;
+  --teal: #1aa2a5;
+  --border: #d7e2e7;
+  color: var(--ink);
+  background: var(--page-bg);
+  color-scheme: light;
+  font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
+}
+
+body {
+  background: var(--page-bg);
+  min-width: 320px;
+}
+
+#app {
+  border: 0;
+  display: block;
+  margin: 0;
+  max-width: none;
+  min-height: 100svh;
+  text-align: left;
+  width: auto;
+}

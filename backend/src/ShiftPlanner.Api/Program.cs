@@ -8,7 +8,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddSingleton(TimeProvider.System);
-builder.Services.AddSingleton<IHolidayProvider, NoHolidayProvider>();
+builder.Services.AddSingleton<IHolidayProvider, GovernmentOfficeHolidayProvider>();
 builder.Services.AddScoped<ICalendarService, CalendarService>();
 builder.Services.AddScoped<IScheduleService, ScheduleService>();
 builder.Services.AddScoped<IStatisticsService, StatisticsService>();

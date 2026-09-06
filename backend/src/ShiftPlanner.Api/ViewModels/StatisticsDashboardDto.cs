@@ -21,6 +21,7 @@ public sealed record MonthlyWorkdayRankingDto(
 
 public sealed record DailyScheduleDto(
     DateOnly WorkDate,
+    string? HolidayName,
     IReadOnlyList<ScheduledEmployeeDto> Employees);
 
 public sealed record ScheduledEmployeeDto(int EmployeeId, string EmployeeName);
