@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using ShiftPlanner.Api.Data;
 using ShiftPlanner.Api.Models;
+using ShiftPlanner.Api.ViewModels;
 
 namespace ShiftPlanner.Api.Services;
 
@@ -12,6 +13,67 @@ public class ScheduleService(
     private const int MaximumEmployeesPerDay = 2;
     private const int MinimumWorkdaysPerEmployeePerMonth = 6;
     private const int MaximumWorkdaysPerEmployeePerMonth = 15;
+
+    public async Task<ScheduleCalendarResult> GetNextMonthCalendarAsync(
+        int employeeId,
+        CancellationToken cancellationToken = default)
+    {
+        if (!await EmployeeExistsAsync(employeeId, cancellationToken))
+        {
+            return ScheduleCalendarResult.Failure("EmployeeNotFound", "找不到指定員工。");
+        }
+
+        var today = DateOnly.FromDateTime(timeProvider.GetLocalNow().DateTime);
+        var firstDayOfNextMonth = new DateOnly(today.Year, today.Month, 1).AddMonths(1);
+        var firstDayOfFollowingMonth = firstDayOfNextMonth.AddMonths(1);
+        var scheduleSummaries = await dbContext.Schedules
+            .AsNoTracking()
+            .Where(schedule => schedule.WorkDate >= firstDayOfNextMonth
+                && schedule.WorkDate < firstDayOfFollowingMonth)
+            .GroupBy(schedule => schedule.WorkDate)
+            .Select(group => new
+            {
+                WorkDate = group.Key,
+                ScheduledEmployeeCount = group.Count(),
+                IsMine = group.Any(schedule => schedule.EmployeeId == employeeId),
+                MyScheduleId = group
+                    .Where(schedule => schedule.EmployeeId == employeeId)
+                    .Select(schedule => (int?)schedule.Id)
+                    .SingleOrDefault()
+            })
+            .ToListAsync(cancellationToken);
+
+        var summaryByDate = scheduleSummaries.ToDictionary(summary => summary.WorkDate);
+        var days = Enumerable.Range(0, DateTime.DaysInMonth(firstDayOfNextMonth.Year, firstDayOfNextMonth.Month))
+            .Select(dayOffset => firstDayOfNextMonth.AddDays(dayOffset))
+            .Select(workDate =>
+            {
+                summaryByDate.TryGetValue(workDate, out var summary);
+                var isSaturday = workDate.DayOfWeek == DayOfWeek.Saturday;
+                var isSunday = workDate.DayOfWeek == DayOfWeek.Sunday;
+                var holidayName = calendarService.GetHolidayName(workDate);
+                var scheduledEmployeeCount = summary?.ScheduledEmployeeCount ?? 0;
+                var isMine = summary?.IsMine ?? false;
+                var myScheduleId = summary?.MyScheduleId;
+                var canSchedule = calendarService.IsSchedulableMonth(workDate)
+                    && calendarService.IsWorkday(workDate)
+                    && !isMine
+                    && scheduledEmployeeCount < MaximumEmployeesPerDay;
+
+                return new ScheduleCalendarDayDto(
+                    workDate,
+                    canSchedule,
+                    isMine,
+                    myScheduleId,
+                    isSaturday,
+                    isSunday,
+                    scheduledEmployeeCount,
+                    holidayName);
+            })
+            .ToList();
+
+        return ScheduleCalendarResult.Success(days);
+    }
 
     public async Task<ScheduleQueryResult> GetNextMonthAsync(
         int employeeId,

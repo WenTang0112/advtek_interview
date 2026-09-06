@@ -8,5 +8,8 @@ export default defineConfig({
     proxy: {
       '/api': 'http://localhost:5209',
     },
+    watch: {
+      ignored: ['**/backend/**'],
+    },
   },
 })

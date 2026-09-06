@@ -2,8 +2,8 @@ namespace ShiftPlanner.Api.Services;
 
 public class NoHolidayProvider : IHolidayProvider
 {
-    public bool IsHoliday(DateOnly date)
+    public HolidayInfo? GetHoliday(DateOnly date)
     {
-        return false;
+        return null;
     }
 }

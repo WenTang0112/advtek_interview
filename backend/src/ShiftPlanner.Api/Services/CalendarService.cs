@@ -9,7 +9,12 @@ public class CalendarService(IHolidayProvider holidayProvider, TimeProvider time
 
     public bool IsHoliday(DateOnly date)
     {
-        return holidayProvider.IsHoliday(date);
+        return holidayProvider.GetHoliday(date) is not null;
+    }
+
+    public string? GetHolidayName(DateOnly date)
+    {
+        return holidayProvider.GetHoliday(date)?.Name;
     }
 
     public bool IsSchedulableMonth(DateOnly date)

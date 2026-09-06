@@ -8,6 +8,23 @@ namespace ShiftPlanner.Api.Controllers;
 [Route("api/employees/{employeeId:int}/schedules")]
 public class EmployeeSchedulesController(IScheduleService scheduleService) : ControllerBase
 {
+    [HttpGet("calendar/next-month")]
+    [ProducesResponseType(typeof(IReadOnlyList<ScheduleCalendarDayDto>), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ApiErrorResponse), StatusCodes.Status404NotFound)]
+    public async Task<ActionResult<IReadOnlyList<ScheduleCalendarDayDto>>> GetNextMonthCalendarAsync(
+        int employeeId,
+        CancellationToken cancellationToken)
+    {
+        var result = await scheduleService.GetNextMonthCalendarAsync(employeeId, cancellationToken);
+
+        if (!result.Succeeded)
+        {
+            return NotFound(new ApiErrorResponse(result.Code, result.Message));
+        }
+
+        return Ok(result.Days);
+    }
+
     [HttpGet("next-month")]
     [ProducesResponseType(typeof(IReadOnlyList<ScheduleResponse>), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ApiErrorResponse), StatusCodes.Status404NotFound)]

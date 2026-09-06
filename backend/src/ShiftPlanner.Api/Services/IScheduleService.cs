@@ -2,6 +2,10 @@ namespace ShiftPlanner.Api.Services;
 
 public interface IScheduleService
 {
+    Task<ScheduleCalendarResult> GetNextMonthCalendarAsync(
+        int employeeId,
+        CancellationToken cancellationToken = default);
+
     Task<ScheduleQueryResult> GetNextMonthAsync(
         int employeeId,
         CancellationToken cancellationToken = default);

@@ -6,6 +6,8 @@ public interface ICalendarService
 
     bool IsHoliday(DateOnly date);
 
+    string? GetHolidayName(DateOnly date);
+
     bool IsSchedulableMonth(DateOnly date);
 
     bool IsWorkday(DateOnly date);
