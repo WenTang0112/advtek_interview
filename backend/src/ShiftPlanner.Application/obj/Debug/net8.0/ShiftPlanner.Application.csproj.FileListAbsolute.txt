@@ -13,3 +13,4 @@ D:\排班系統\backend\src\ShiftPlanner.Application\obj\Debug\net8.0\ShiftPlann
 D:\排班系統\backend\src\ShiftPlanner.Application\obj\Debug\net8.0\refint\ShiftPlanner.Application.dll
 D:\排班系統\backend\src\ShiftPlanner.Application\obj\Debug\net8.0\ShiftPlanner.Application.pdb
 D:\排班系統\backend\src\ShiftPlanner.Application\obj\Debug\net8.0\ref\ShiftPlanner.Application.dll
+D:\排班系統\backend\src\ShiftPlanner.Application\obj\Debug\net8.0\ShiftPlanner.Application.sourcelink.json

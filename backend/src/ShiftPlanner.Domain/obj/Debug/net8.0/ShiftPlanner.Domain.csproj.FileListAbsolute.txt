@@ -9,3 +9,4 @@ D:\排班系統\backend\src\ShiftPlanner.Domain\obj\Debug\net8.0\ShiftPlanner.Do
 D:\排班系統\backend\src\ShiftPlanner.Domain\obj\Debug\net8.0\refint\ShiftPlanner.Domain.dll
 D:\排班系統\backend\src\ShiftPlanner.Domain\obj\Debug\net8.0\ShiftPlanner.Domain.pdb
 D:\排班系統\backend\src\ShiftPlanner.Domain\obj\Debug\net8.0\ref\ShiftPlanner.Domain.dll
+D:\排班系統\backend\src\ShiftPlanner.Domain\obj\Debug\net8.0\ShiftPlanner.Domain.sourcelink.json

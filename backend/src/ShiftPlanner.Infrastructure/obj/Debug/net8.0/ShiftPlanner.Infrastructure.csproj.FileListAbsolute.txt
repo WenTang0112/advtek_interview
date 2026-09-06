@@ -15,3 +15,4 @@ D:\排班系統\backend\src\ShiftPlanner.Infrastructure\obj\Debug\net8.0\ShiftPl
 D:\排班系統\backend\src\ShiftPlanner.Infrastructure\obj\Debug\net8.0\refint\ShiftPlanner.Infrastructure.dll
 D:\排班系統\backend\src\ShiftPlanner.Infrastructure\obj\Debug\net8.0\ShiftPlanner.Infrastructure.pdb
 D:\排班系統\backend\src\ShiftPlanner.Infrastructure\obj\Debug\net8.0\ref\ShiftPlanner.Infrastructure.dll
+D:\排班系統\backend\src\ShiftPlanner.Infrastructure\obj\Debug\net8.0\ShiftPlanner.Infrastructure.sourcelink.json
