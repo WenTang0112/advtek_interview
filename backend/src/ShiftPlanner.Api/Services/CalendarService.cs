@@ -7,6 +7,11 @@ public class CalendarService(IHolidayProvider holidayProvider, TimeProvider time
         return date.DayOfWeek is DayOfWeek.Saturday or DayOfWeek.Sunday;
     }
 
+    public bool IsHoliday(DateOnly date)
+    {
+        return holidayProvider.IsHoliday(date);
+    }
+
     public bool IsSchedulableMonth(DateOnly date)
     {
         var today = DateOnly.FromDateTime(timeProvider.GetLocalNow().DateTime);
@@ -17,6 +22,6 @@ public class CalendarService(IHolidayProvider holidayProvider, TimeProvider time
 
     public bool IsWorkday(DateOnly date)
     {
-        return !IsWeekend(date) && !holidayProvider.IsHoliday(date);
+        return !IsWeekend(date) && !IsHoliday(date);
     }
 }
