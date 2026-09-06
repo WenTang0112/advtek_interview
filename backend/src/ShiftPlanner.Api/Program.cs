@@ -1,11 +1,15 @@
 using Microsoft.EntityFrameworkCore;
 using ShiftPlanner.Api.Data;
+using ShiftPlanner.Api.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddSingleton(TimeProvider.System);
+builder.Services.AddSingleton<IHolidayProvider, NoHolidayProvider>();
+builder.Services.AddScoped<ICalendarService, CalendarService>();
 
 var app = builder.Build();
 
