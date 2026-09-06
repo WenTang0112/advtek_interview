@@ -16,6 +16,11 @@ public interface IScheduleService
         int scheduleId,
         CancellationToken cancellationToken = default);
 
+    Task<ScheduleSubmissionResult> SubmitScheduleAsync(
+        int employeeId,
+        DateOnly scheduleMonth,
+        CancellationToken cancellationToken = default);
+
     Task<ScheduleCountResult> GetCurrentMonthCountAsync(
         int employeeId,
         CancellationToken cancellationToken = default);

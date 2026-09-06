@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ShiftPlanner.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0a5e2bd8746dcbe52dcc68c3cc6db2d3e0cb3c69")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+52802f6ce5d9e33a121e5042b956cc5ab4023b46")]
 [assembly: System.Reflection.AssemblyProductAttribute("ShiftPlanner.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ShiftPlanner.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

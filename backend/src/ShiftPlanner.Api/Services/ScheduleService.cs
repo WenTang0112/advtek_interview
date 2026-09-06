@@ -10,6 +10,7 @@ public class ScheduleService(
     TimeProvider timeProvider) : IScheduleService
 {
     private const int MaximumEmployeesPerDay = 2;
+    private const int MinimumWorkdaysPerEmployeePerMonth = 6;
     private const int MaximumWorkdaysPerEmployeePerMonth = 15;
 
     public async Task<ScheduleQueryResult> GetNextMonthAsync(
@@ -167,6 +168,43 @@ public class ScheduleService(
             cancellationToken);
 
         return ScheduleCountResult.Success(scheduledDays);
+    }
+
+    public async Task<ScheduleSubmissionResult> SubmitScheduleAsync(
+        int employeeId,
+        DateOnly scheduleMonth,
+        CancellationToken cancellationToken = default)
+    {
+        if (!await EmployeeExistsAsync(employeeId, cancellationToken))
+        {
+            return ScheduleSubmissionResult.Failure("EmployeeNotFound", "找不到指定員工。", 0);
+        }
+
+        var firstDayOfMonth = new DateOnly(scheduleMonth.Year, scheduleMonth.Month, 1);
+        var firstDayOfNextMonth = firstDayOfMonth.AddMonths(1);
+        var scheduledDays = await dbContext.Schedules.CountAsync(
+            schedule => schedule.EmployeeId == employeeId
+                && schedule.WorkDate >= firstDayOfMonth
+                && schedule.WorkDate < firstDayOfNextMonth,
+            cancellationToken);
+
+        if (scheduledDays < MinimumWorkdaysPerEmployeePerMonth)
+        {
+            return ScheduleSubmissionResult.Failure(
+                "MinimumWorkdaysNotMet",
+                "提交班表至少需要排定 6 天。",
+                scheduledDays);
+        }
+
+        if (scheduledDays > MaximumWorkdaysPerEmployeePerMonth)
+        {
+            return ScheduleSubmissionResult.Failure(
+                "MaximumWorkdaysExceeded",
+                "提交班表最多只能有 15 天。",
+                scheduledDays);
+        }
+
+        return ScheduleSubmissionResult.Success(scheduledDays);
     }
 
     private Task<bool> EmployeeExistsAsync(int employeeId, CancellationToken cancellationToken)
